@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Feyrouz Mehalaine | Gestionnaire Opérations & Partenariats</title>
+    <title>Feyrouz Mehalaine | Partnerships & Business Development Expert</title>
     <style>
         * {
             margin: 0;
@@ -13,21 +13,24 @@
 
         :root {
             --primary: #2563eb;
-            --secondary: #8b5cf6;
-            --accent: #f59e0b;
+            --secondary: #f59e0b;
+            --accent: #10b981;
             --dark: #1e293b;
             --light: #f8fafc;
             --gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            --gradient-2: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
-            --gradient-3: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+            --gradient2: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
         }
 
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: var(--light);
-            color: var(--dark);
             line-height: 1.6;
+            color: var(--dark);
             overflow-x: hidden;
+        }
+
+        /* Smooth Scroll */
+        html {
+            scroll-behavior: smooth;
         }
 
         /* Navigation */
@@ -37,20 +40,20 @@
             width: 100%;
             background: rgba(255, 255, 255, 0.95);
             backdrop-filter: blur(10px);
-            padding: 1rem 2rem;
             box-shadow: 0 2px 20px rgba(0,0,0,0.1);
             z-index: 1000;
             transition: all 0.3s ease;
         }
 
         nav.scrolled {
-            padding: 0.5rem 2rem;
+            padding: 0.5rem 0;
             box-shadow: 0 4px 30px rgba(0,0,0,0.15);
         }
 
-        .nav-container {
-            max-width: 1400px;
+        nav .container {
+            max-width: 1200px;
             margin: 0 auto;
+            padding: 1rem 2rem;
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -65,45 +68,51 @@
             background-clip: text;
         }
 
-        .nav-links {
+        nav ul {
             display: flex;
-            gap: 2rem;
             list-style: none;
+            gap: 2rem;
         }
 
-        .nav-links a {
+        nav a {
             text-decoration: none;
             color: var(--dark);
             font-weight: 500;
-            transition: all 0.3s ease;
+            transition: color 0.3s;
             position: relative;
         }
 
-        .nav-links a::after {
+        nav a:hover {
+            color: var(--primary);
+        }
+
+        nav a::after {
             content: '';
             position: absolute;
             bottom: -5px;
             left: 0;
             width: 0;
             height: 2px;
-            background: var(--gradient);
-            transition: width 0.3s ease;
+            background: var(--primary);
+            transition: width 0.3s;
         }
 
-        .nav-links a:hover::after {
+        nav a:hover::after {
             width: 100%;
         }
 
         /* Hero Section */
         .hero {
             min-height: 100vh;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             display: flex;
             align-items: center;
             justify-content: center;
-            background: var(--gradient);
+            text-align: center;
+            color: white;
             position: relative;
             overflow: hidden;
-            padding: 6rem 2rem 4rem;
+            padding-top: 80px;
         }
 
         .hero::before {
@@ -113,51 +122,22 @@
             left: 0;
             right: 0;
             bottom: 0;
-            background: url('data:image/svg+xml,<svg width="100" height="100" xmlns="http://www.w3.org/2000/svg"><circle cx="50" cy="50" r="2" fill="rgba(255,255,255,0.1)"/></svg>');
-            animation: float 20s infinite linear;
+            background: url('data:image/svg+xml,<svg width="100" height="100" xmlns="http://www.w3.org/2000/svg"><defs><pattern id="grid" width="100" height="100" patternUnits="userSpaceOnUse"><path d="M 100 0 L 0 0 0 100" fill="none" stroke="rgba(255,255,255,0.1)" stroke-width="1"/></pattern></defs><rect width="100%" height="100%" fill="url(%23grid)"/></svg>');
+            opacity: 0.3;
+            animation: moveBackground 20s linear infinite;
         }
 
-        @keyframes float {
-            from { transform: translateY(0); }
-            to { transform: translateY(-100px); }
+        @keyframes moveBackground {
+            0% { transform: translate(0, 0); }
+            100% { transform: translate(100px, 100px); }
         }
 
         .hero-content {
-            max-width: 1200px;
-            text-align: center;
-            color: white;
             position: relative;
             z-index: 1;
-        }
-
-        .hero-subtitle {
-            font-size: 1.2rem;
-            opacity: 0.9;
-            margin-bottom: 1rem;
-            animation: fadeInUp 0.8s ease;
-        }
-
-        .hero-title {
-            font-size: 4rem;
-            font-weight: 800;
-            margin-bottom: 1rem;
-            animation: fadeInUp 0.8s ease 0.2s backwards;
-        }
-
-        .hero-tagline {
-            font-size: 1.5rem;
-            margin-bottom: 2rem;
-            opacity: 0.95;
-            animation: fadeInUp 0.8s ease 0.4s backwards;
-        }
-
-        .hero-description {
-            font-size: 1.1rem;
-            max-width: 800px;
-            margin: 0 auto 3rem;
-            opacity: 0.9;
-            line-height: 1.8;
-            animation: fadeInUp 0.8s ease 0.6s backwards;
+            max-width: 900px;
+            padding: 2rem;
+            animation: fadeInUp 1s ease;
         }
 
         @keyframes fadeInUp {
@@ -171,26 +151,38 @@
             }
         }
 
-        .stats-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-            gap: 2rem;
-            margin-bottom: 3rem;
-            animation: fadeInUp 0.8s ease 0.8s backwards;
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            animation: fadeInUp 1s ease 0.2s both;
         }
 
-        .stat-card {
-            background: rgba(255,255,255,0.15);
-            backdrop-filter: blur(10px);
-            padding: 1.5rem;
-            border-radius: 15px;
-            border: 1px solid rgba(255,255,255,0.2);
-            transition: all 0.3s ease;
+        .hero .subtitle {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            opacity: 0.95;
+            animation: fadeInUp 1s ease 0.4s both;
         }
 
-        .stat-card:hover {
-            transform: translateY(-5px);
-            background: rgba(255,255,255,0.25);
+        .hero .tagline {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+            font-weight: 300;
+            animation: fadeInUp 1s ease 0.6s both;
+        }
+
+        .hero-stats {
+            display: flex;
+            justify-content: center;
+            gap: 3rem;
+            margin: 3rem 0;
+            flex-wrap: wrap;
+            animation: fadeInUp 1s ease 0.8s both;
+        }
+
+        .stat {
+            text-align: center;
         }
 
         .stat-number {
@@ -210,14 +202,14 @@
             gap: 1rem;
             justify-content: center;
             flex-wrap: wrap;
-            animation: fadeInUp 0.8s ease 1s backwards;
+            animation: fadeInUp 1s ease 1s both;
         }
 
         .btn {
-            padding: 1rem 2.5rem;
+            padding: 1rem 2rem;
             border: none;
             border-radius: 50px;
-            font-size: 1.1rem;
+            font-size: 1rem;
             font-weight: 600;
             cursor: pointer;
             transition: all 0.3s ease;
@@ -244,23 +236,24 @@
         .btn-secondary:hover {
             background: white;
             color: var(--primary);
+            transform: translateY(-3px);
         }
 
-        /* Section Styling */
-        section {
-            padding: 5rem 2rem;
-            max-width: 1400px;
+        /* Container */
+        .container {
+            max-width: 1200px;
             margin: 0 auto;
+            padding: 2rem;
         }
 
-        .section-header {
-            text-align: center;
-            margin-bottom: 4rem;
+        /* Section */
+        section {
+            padding: 5rem 0;
         }
 
         .section-title {
-            font-size: 3rem;
-            font-weight: 800;
+            font-size: 2.5rem;
+            text-align: center;
             margin-bottom: 1rem;
             background: var(--gradient);
             -webkit-background-clip: text;
@@ -269,135 +262,173 @@
         }
 
         .section-subtitle {
-            font-size: 1.2rem;
+            text-align: center;
             color: #64748b;
-            max-width: 700px;
-            margin: 0 auto;
+            margin-bottom: 4rem;
+            font-size: 1.1rem;
         }
 
         /* About Section */
-        .about-grid {
+        .about-content {
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 4rem;
             align-items: center;
         }
 
-        .about-content h3 {
-            font-size: 2rem;
-            margin-bottom: 1rem;
-            color: var(--primary);
-        }
-
-        .about-content p {
+        .about-text {
             font-size: 1.1rem;
-            margin-bottom: 1.5rem;
-            color: #475569;
             line-height: 1.8;
         }
 
-        .skills-highlights {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 1.5rem;
-            margin-top: 2rem;
-        }
-
-        .skill-item {
-            padding: 1.5rem;
-            background: linear-gradient(135deg, #667eea15 0%, #764ba215 100%);
-            border-radius: 15px;
-            border-left: 4px solid var(--primary);
-            transition: all 0.3s ease;
-        }
-
-        .skill-item:hover {
-            transform: translateX(10px);
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-        }
-
-        .skill-item h4 {
-            color: var(--primary);
-            margin-bottom: 0.5rem;
-            font-size: 1.1rem;
-        }
-
-        /* Expertise Cards */
-        .expertise-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-        }
-
-        .expertise-card {
-            background: white;
-            padding: 2.5rem;
-            border-radius: 20px;
-            box-shadow: 0 10px 40px rgba(0,0,0,0.08);
-            transition: all 0.4s ease;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .expertise-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 5px;
-            background: var(--gradient);
-            transform: scaleX(0);
-            transition: transform 0.4s ease;
-        }
-
-        .expertise-card:hover::before {
-            transform: scaleX(1);
-        }
-
-        .expertise-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 20px 50px rgba(0,0,0,0.15);
-        }
-
-        .expertise-icon {
-            width: 70px;
-            height: 70px;
-            background: var(--gradient);
-            border-radius: 15px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 2rem;
+        .about-text p {
             margin-bottom: 1.5rem;
         }
 
-        .expertise-card h3 {
+        .highlight {
+            color: var(--primary);
+            font-weight: 600;
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.5rem;
+        }
+
+        .skill-card {
+            background: var(--light);
+            padding: 1.5rem;
+            border-radius: 15px;
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+        }
+
+        .skill-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--primary);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+
+        .skill-card h3 {
+            margin-bottom: 0.5rem;
+            color: var(--primary);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .skill-icon {
             font-size: 1.5rem;
+        }
+
+        /* Experience Timeline */
+        .timeline {
+            position: relative;
+            padding: 2rem 0;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: linear-gradient(180deg, var(--primary) 0%, var(--secondary) 100%);
+            transform: translateX(-50%);
+        }
+
+        .timeline-item {
+            position: relative;
+            margin-bottom: 4rem;
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeInUp 0.6s ease forwards;
+        }
+
+        .timeline-item:nth-child(odd) {
+            padding-right: 50%;
+            padding-left: 0;
+            text-align: right;
+        }
+
+        .timeline-item:nth-child(even) {
+            padding-left: 50%;
+            padding-right: 0;
+            text-align: left;
+        }
+
+        .timeline-content {
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+            margin: 0 2rem;
+        }
+
+        .timeline-content:hover {
+            transform: scale(1.02);
+            box-shadow: 0 10px 40px rgba(0,0,0,0.15);
+        }
+
+        .timeline-dot {
+            position: absolute;
+            left: 50%;
+            top: 0;
+            width: 20px;
+            height: 20px;
+            background: var(--primary);
+            border-radius: 50%;
+            transform: translateX(-50%);
+            border: 4px solid white;
+            box-shadow: 0 0 0 4px var(--primary);
+            z-index: 1;
+        }
+
+        .timeline-date {
+            display: inline-block;
+            background: var(--gradient);
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
             margin-bottom: 1rem;
+        }
+
+        .timeline-title {
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
             color: var(--dark);
         }
 
-        .expertise-card ul {
+        .timeline-company {
+            color: var(--primary);
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+
+        .timeline-achievements {
             list-style: none;
+            margin-top: 1rem;
         }
 
-        .expertise-card li {
+        .timeline-achievements li {
             padding: 0.5rem 0;
-            color: #64748b;
-            position: relative;
             padding-left: 1.5rem;
+            position: relative;
         }
 
-        .expertise-card li::before {
-            content: '✓';
+        .timeline-achievements li::before {
+            content: '▸';
             position: absolute;
             left: 0;
             color: var(--primary);
             font-weight: bold;
         }
 
-        /* Projects Section */
+        /* Projects Grid */
         .projects-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
@@ -408,22 +439,31 @@
             background: white;
             border-radius: 20px;
             overflow: hidden;
-            box-shadow: 0 10px 40px rgba(0,0,0,0.08);
-            transition: all 0.4s ease;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
         }
 
         .project-card:hover {
             transform: translateY(-10px);
-            box-shadow: 0 20px 50px rgba(0,0,0,0.15);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.2);
+            border-color: var(--primary);
         }
 
         .project-header {
-            padding: 2rem;
             background: var(--gradient);
             color: white;
+            padding: 2rem;
+            text-align: center;
         }
 
-        .project-header h3 {
+        .project-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            display: block;
+        }
+
+        .project-title {
             font-size: 1.5rem;
             margin-bottom: 0.5rem;
         }
@@ -438,182 +478,87 @@
 
         .project-section h4 {
             color: var(--primary);
-            margin-bottom: 0.8rem;
-            font-size: 1.1rem;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
+            margin-bottom: 0.5rem;
+            font-size: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
         }
 
         .project-section ul {
             list-style: none;
+            padding-left: 0;
         }
 
         .project-section li {
-            padding: 0.4rem 0;
-            color: #64748b;
-            padding-left: 1.5rem;
+            padding: 0.3rem 0;
+            padding-left: 1.2rem;
             position: relative;
         }
 
         .project-section li::before {
-            content: '→';
+            content: '✓';
             position: absolute;
             left: 0;
             color: var(--accent);
-        }
-
-        .project-impact {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
-            gap: 1rem;
-            margin-top: 1.5rem;
-        }
-
-        .impact-badge {
-            background: linear-gradient(135deg, #667eea15 0%, #764ba215 100%);
-            padding: 1rem;
-            border-radius: 10px;
-            text-align: center;
-        }
-
-        .impact-value {
-            font-size: 1.5rem;
             font-weight: bold;
-            color: var(--primary);
-            display: block;
         }
 
-        .impact-label {
-            font-size: 0.85rem;
-            color: #64748b;
-        }
-
-        .project-tools {
+        .project-tags {
             display: flex;
             flex-wrap: wrap;
             gap: 0.5rem;
-            margin-top: 1.5rem;
+            margin-top: 1rem;
         }
 
-        .tool-tag {
-            background: var(--gradient);
-            color: white;
-            padding: 0.5rem 1rem;
+        .tag {
+            background: var(--light);
+            padding: 0.3rem 0.8rem;
             border-radius: 20px;
             font-size: 0.85rem;
-            font-weight: 600;
+            color: var(--primary);
+            font-weight: 500;
         }
 
-        /* Experience Timeline */
-        .timeline {
-            position: relative;
-            padding: 2rem 0;
-        }
-
-        .timeline::before {
-            content: '';
-            position: absolute;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 4px;
-            height: 100%;
-            background: var(--gradient);
-        }
-
-        .timeline-item {
+        /* Impact Numbers */
+        .impact-grid {
             display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 4rem;
-            margin-bottom: 4rem;
-            position: relative;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
         }
 
-        .timeline-item:nth-child(even) .timeline-content:first-child {
-            order: 2;
-        }
-
-        .timeline-content {
+        .impact-card {
+            text-align: center;
+            padding: 2rem;
             background: white;
-            padding: 2.5rem;
-            border-radius: 20px;
-            box-shadow: 0 10px 40px rgba(0,0,0,0.08);
-            transition: all 0.4s ease;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
         }
 
-        .timeline-content:hover {
-            transform: scale(1.03);
-            box-shadow: 0 20px 50px rgba(0,0,0,0.15);
+        .impact-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
         }
 
-        .timeline-dot {
-            position: absolute;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 20px;
-            height: 20px;
-            background: white;
-            border: 4px solid var(--primary);
-            border-radius: 50%;
-            top: 2rem;
-            z-index: 2;
-        }
-
-        .company-header {
-            margin-bottom: 1.5rem;
-        }
-
-        .company-name {
-            font-size: 1.8rem;
-            color: var(--primary);
-            margin-bottom: 0.5rem;
-        }
-
-        .job-title {
-            font-size: 1.3rem;
-            color: var(--dark);
-            font-weight: 600;
-            margin-bottom: 0.5rem;
-        }
-
-        .job-period {
-            color: #64748b;
-            font-size: 1rem;
-        }
-
-        .achievements {
-            margin-top: 1.5rem;
-        }
-
-        .achievement-category {
-            margin-bottom: 2rem;
-        }
-
-        .achievement-category h4 {
-            color: var(--primary);
-            margin-bottom: 1rem;
-            font-size: 1.2rem;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-
-        .achievement-item {
-            padding: 1rem;
-            background: linear-gradient(135deg, #667eea08 0%, #764ba208 100%);
-            border-radius: 10px;
-            margin-bottom: 0.8rem;
-            border-left: 3px solid var(--accent);
-        }
-
-        .achievement-item strong {
-            color: var(--dark);
+        .impact-number {
+            font-size: 3rem;
+            font-weight: bold;
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
             display: block;
-            margin-bottom: 0.3rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .impact-label {
+            color: var(--dark);
+            font-weight: 500;
         }
 
         /* Skills Section */
-        .skills-container {
+        .skills-categories {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 2rem;
@@ -621,13 +566,12 @@
 
         .skill-category {
             background: white;
-            padding: 2.5rem;
-            border-radius: 20px;
-            box-shadow: 0 10px 40px rgba(0,0,0,0.08);
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
         }
 
         .skill-category h3 {
-            font-size: 1.5rem;
             color: var(--primary);
             margin-bottom: 1.5rem;
             display: flex;
@@ -635,11 +579,7 @@
             gap: 0.5rem;
         }
 
-        .skill-list {
-            list-style: none;
-        }
-
-        .skill-list-item {
+        .skill-item {
             margin-bottom: 1.5rem;
         }
 
@@ -647,13 +587,12 @@
             display: flex;
             justify-content: space-between;
             margin-bottom: 0.5rem;
-            font-weight: 600;
-            color: var(--dark);
+            font-weight: 500;
         }
 
         .skill-bar {
             height: 8px;
-            background: #e2e8f0;
+            background: var(--light);
             border-radius: 10px;
             overflow: hidden;
         }
@@ -666,24 +605,20 @@
         }
 
         /* Contact Section */
-        .contact-container {
+        .contact-section {
+            background: var(--light);
+        }
+
+        .contact-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 4rem;
-            align-items: center;
+            gap: 3rem;
         }
 
         .contact-info {
-            background: white;
-            padding: 3rem;
-            border-radius: 20px;
-            box-shadow: 0 10px 40px rgba(0,0,0,0.08);
-        }
-
-        .contact-info h3 {
-            font-size: 2rem;
-            margin-bottom: 2rem;
-            color: var(--primary);
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
         }
 
         .contact-item {
@@ -691,38 +626,58 @@
             align-items: center;
             gap: 1rem;
             padding: 1.5rem;
-            background: linear-gradient(135deg, #667eea08 0%, #764ba208 100%);
+            background: white;
             border-radius: 15px;
-            margin-bottom: 1rem;
             transition: all 0.3s ease;
         }
 
         .contact-item:hover {
             transform: translateX(10px);
-            background: linear-gradient(135deg, #667eea15 0%, #764ba215 100%);
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
         }
 
         .contact-icon {
-            width: 50px;
-            height: 50px;
-            background: var(--gradient);
-            border-radius: 10px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-size: 1.5rem;
+            font-size: 2rem;
+            color: var(--primary);
         }
 
-        .contact-details a {
+        .contact-form {
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
             color: var(--dark);
-            text-decoration: none;
-            font-weight: 600;
         }
 
-        .contact-details span {
-            color: #64748b;
-            font-size: 0.9rem;
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 0.8rem;
+            border: 2px solid var(--light);
+            border-radius: 10px;
+            font-size: 1rem;
+            transition: border-color 0.3s;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--primary);
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 150px;
         }
 
         /* Footer */
@@ -730,247 +685,974 @@
             background: var(--dark);
             color: white;
             text-align: center;
-            padding: 3rem 2rem;
-        }
-
-        footer p {
-            margin-bottom: 1rem;
+            padding: 2rem;
         }
 
         .social-links {
             display: flex;
             justify-content: center;
             gap: 1.5rem;
-            margin-top: 1.5rem;
+            margin-top: 1rem;
         }
 
         .social-links a {
-            width: 50px;
-            height: 50px;
-            background: rgba(255,255,255,0.1);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
             color: white;
-            text-decoration: none;
+            font-size: 1.5rem;
             transition: all 0.3s ease;
         }
 
         .social-links a:hover {
-            background: var(--primary);
-            transform: translateY(-5px);
+            color: var(--primary);
+            transform: translateY(-3px);
+        }
+
+        /* Mobile Menu */
+        .mobile-menu-btn {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            cursor: pointer;
+        }
+
+        .mobile-menu-btn span {
+            width: 25px;
+            height: 3px;
+            background: var(--dark);
+            transition: all 0.3s;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .hero .subtitle {
+                font-size: 1.2rem;
+            }
+
+            .hero-stats {
+                gap: 1.5rem;
+            }
+
+            .stat-number {
+                font-size: 1.8rem;
+            }
+
+            nav ul {
+                display: none;
+            }
+
+            .mobile-menu-btn {
+                display: flex;
+            }
+
+            .about-content,
+            .contact-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .skills-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .timeline::before {
+                left: 20px;
+            }
+
+            .timeline-item:nth-child(odd),
+            .timeline-item:nth-child(even) {
+                padding-left: 60px;
+                padding-right: 0;
+                text-align: left;
+            }
+
+            .timeline-dot {
+                left: 20px;
+            }
+
+            .timeline-content {
+                margin: 0;
+            }
+
+            .projects-grid {
+                grid-template-columns: 1fr;
+            }
         }
 
         /* Animations */
         .fade-in {
             opacity: 0;
             transform: translateY(30px);
-            transition: all 0.8s ease;
+            transition: all 0.6s ease;
         }
 
         .fade-in.visible {
             opacity: 1;
             transform: translateY(0);
         }
-
-        /* Responsive */
-        @media (max-width: 1024px) {
-            .timeline::before {
-                left: 30px;
-            }
-
-            .timeline-item {
-                grid-template-columns: 1fr;
-                padding-left: 80px;
-            }
-
-            .timeline-item:nth-child(even) .timeline-content:first-child {
-                order: 1;
-            }
-
-            .timeline-dot {
-                left: 30px;
-            }
-
-            .about-grid,
-            .contact-container {
-                grid-template-columns: 1fr;
-            }
-        }
-
-        @media (max-width: 768px) {
-            .hero-title {
-                font-size: 2.5rem;
-            }
-
-            .section-title {
-                font-size: 2rem;
-            }
-
-            .nav-links {
-                display: none;
-            }
-
-            .stats-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
-
-            .skills-highlights {
-                grid-template-columns: 1fr;
-            }
-        }
-
-        /* Scroll Animation Observer */
-        [data-animate] {
-            opacity: 0;
-            transform: translateY(50px);
-        }
-
-        [data-animate].animated {
-            opacity: 1;
-            transform: translateY(0);
-            transition: all 0.8s ease;
-        }
     </style>
 </head>
 <body>
     <!-- Navigation -->
     <nav id="navbar">
-        <div class="nav-container">
+        <div class="container">
             <div class="logo">FM</div>
-            <ul class="nav-links">
+            <ul>
                 <li><a href="#home">Accueil</a></li>
                 <li><a href="#about">À Propos</a></li>
-                <li><a href="#expertise">Expertise</a></li>
+                <li><a href="#experience">Expérience</a></li>
                 <li><a href="#projects">Projets</a></li>
-                <li><a href="#experience">Parcours</a></li>
                 <li><a href="#skills">Compétences</a></li>
                 <li><a href="#contact">Contact</a></li>
             </ul>
+            <div class="mobile-menu-btn">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
         </div>
     </nav>
 
     <!-- Hero Section -->
-    <section id="home" class="hero">
+    <section class="hero" id="home">
         <div class="hero-content">
-            <div class="hero-subtitle">Bienvenue, je suis</div>
-            <h1 class="hero-title">FEYROUZ MEHALAINE</h1>
-            <p class="hero-tagline">Gestionnaire Opérations & Partenariats Stratégiques</p>
-            <p class="hero-description">
-                Experte en développement de partenariats commerciaux, optimisation opérationnelle et transformation digitale. 
-                Je combine vision stratégique, excellence opérationnelle et innovation pour créer de la valeur durable.
-            </p>
+            <h1>FEYROUZ MEHALAINE</h1>
+            <p class="subtitle">Partnerships & Business Development Expert</p>
+            <p class="tagline">"Développer des partenariats stratégiques | Digitaliser les processus | Créer de l'impact"</p>
             
-            <div class="stats-grid">
-                <div class="stat-card">
-                    <span class="stat-number">2+</span>
-                    <span class="stat-label">Années d'Expérience</span>
-                </div>
-                <div class="stat-card">
+            <div class="hero-stats">
+                <div class="stat">
                     <span class="stat-number">7+</span>
                     <span class="stat-label">Partenariats Gérés</span>
                 </div>
-                <div class="stat-card">
+                <div class="stat">
                     <span class="stat-number">250+</span>
-                    <span class="stat-label">Personnes Formées</span>
+                    <span class="stat-label">Utilisateurs Formés</span>
                 </div>
-                <div class="stat-card">
+                <div class="stat">
                     <span class="stat-number">60%</span>
-                    <span class="stat-label">Taux de Succès AO</span>
+                    <span class="stat-label">Taux de Succès A.O.</span>
+                </div>
+                <div class="stat">
+                    <span class="stat-number">99.8%</span>
+                    <span class="stat-label">Précision Financière</span>
                 </div>
             </div>
 
             <div class="cta-buttons">
-                <a href="#projects" class="btn btn-primary">Découvrir mes projets</a>
+                <a href="#projects" class="btn btn-primary">Découvrir mes réalisations</a>
                 <a href="#contact" class="btn btn-secondary">Me contacter</a>
             </div>
         </div>
     </section>
 
     <!-- About Section -->
-    <section id="about" data-animate>
-        <div class="section-header">
-            <h2 class="section-title">Qui Suis-Je ?</h2>
-            <p class="section-subtitle">Une professionnelle polyvalente alliant commerce, analyse et innovation</p>
-        </div>
-        
-        <div class="about-grid">
+    <section id="about">
+        <div class="container">
+            <h2 class="section-title">Qui suis-je ?</h2>
+            <p class="section-subtitle">Une professionnelle polyvalente aux multiples talents</p>
+            
             <div class="about-content">
-                <h3>Mon Parcours</h3>
-                <p>
-                    Diplômée d'HEC Alger en Affaires Internationales, j'ai développé une expertise unique en gestion de partenariats stratégiques 
-                    et optimisation opérationnelle dans le secteur de l'assurance. Ma force ? Transformer les défis complexes en solutions 
-                    innovantes et mesurables.
-                </p>
-                <p>
-                    Au-delà de ma formation commerciale, j'ai développé une passion pour l'analyse de données et l'automatisation. 
-                    Cette combinaison rare me permet de construire des partenariats solides tout en optimisant continuellement les processus.
-                </p>
-                <p>
-                    Mon approche : écouter, analyser, innover et mesurer. Chaque projet est une opportunité de créer de la valeur 
-                    pour l'entreprise et ses partenaires.
-                </p>
-            </div>
+                <div class="about-text">
+                    <p>
+                        <span class="highlight">Gestionnaire commerciale et opérationnelle confirmée</span> avec plus de 2 ans d'expérience dans le développement de partenariats stratégiques et l'optimisation des processus dans le secteur de l'assurance.
+                    </p>
+                    <p>
+                        Ma force ? <span class="highlight">Une vision 360° du business</span> : je développe des partenariats gagnants-gagnants, je négocie des conventions complexes, j'analyse les performances financières avec une précision chirurgicale, et j'optimise les opérations grâce à l'automatisation et la digitalisation.
+                    </p>
+                    <p>
+                        Diplômée d'<span class="highlight">HEC Alger en Affaires Internationales</span>, je combine expertise commerciale, compétences analytiques avancées, et créativité pour créer des solutions innovantes qui génèrent des résultats mesurables.
+                    </p>
+                </div>
 
-            <div class="skills-highlights">
-                <div class="skill-item">
-                    <h4>🤝 Commerce & Partenariats</h4>
-                    <p>Négociation, développement commercial, gestion de relations stratégiques</p>
-                </div>
-                <div class="skill-item">
-                    <h4>📊 Analyse & Reporting</h4>
-                    <p>Power BI, Excel avancé, tableaux de bord KPIs, insights data-driven</p>
-                </div>
-                <div class="skill-item">
-                    <h4>⚡ Innovation & Automatisation</h4>
-                    <p>Digitalisation de processus, Power Automate, amélioration continue</p>
-                </div>
-                <div class="skill-item">
-                    <h4>🎯 Gestion de Projets</h4>
-                    <p>Coordination multi-équipes, pilotage de projets complexes, formation</p>
+                <div class="skills-grid">
+                    <div class="skill-card">
+                        <h3><span class="skill-icon">🤝</span> Business Development</h3>
+                        <p>Développement de partenariats, négociation de conventions, gestion de portefeuilles clients</p>
+                    </div>
+                    <div class="skill-card">
+                        <h3><span class="skill-icon">📊</span> Analyse & Reporting</h3>
+                        <p>Power BI, Excel avancé, dashboards KPIs, reporting financier avec 99.8% de précision</p>
+                    </div>
+                    <div class="skill-card">
+                        <h3><span class="skill-icon">⚡</span> Innovation & Automatisation</h3>
+                        <p>Power Automate, digitalisation des processus, amélioration continue</p>
+                    </div>
+                    <div class="skill-card">
+                        <h3><span class="skill-icon">🎯</span> Gestion de Projets</h3>
+                        <p>Pilotage de projets complexes, coordination multi-équipes, formation à grande échelle</p>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Expertise Section -->
-    <section id="expertise" data-animate>
-        <div class="section-header">
-            <h2 class="section-title">Mes Domaines d'Expertise</h2>
-            <p class="section-subtitle">Des compétences multidimensionnelles pour des résultats mesurables</p>
+    <!-- Impact Numbers -->
+    <section style="background: var(--light);">
+        <div class="container">
+            <h2 class="section-title">Mon Impact en Chiffres</h2>
+            <div class="impact-grid">
+                <div class="impact-card fade-in">
+                    <span class="impact-number">7+</span>
+                    <p class="impact-label">Partenariats Stratégiques</p>
+                </div>
+                <div class="impact-card fade-in">
+                    <span class="impact-number">6</span>
+                    <p class="impact-label">Conventions Négociées</p>
+                </div>
+                <div class="impact-card fade-in">
+                    <span class="impact-number">250+</span>
+                    <p class="impact-label">Professionnels Formés</p>
+                </div>
+                <div class="impact-card fade-in">
+                    <span class="impact-number">70%</span>
+                    <p class="impact-label">Réduction d'Erreurs</p>
+                </div>
+                <div class="impact-card fade-in">
+                    <span class="impact-number">60%</span>
+                    <p class="impact-label">Gain de Temps Reporting</p>
+                </div>
+                <div class="impact-card fade-in">
+                    <span class="impact-number">100%</span>
+                    <p class="impact-label">Digitalisation Paperless</p>
+                </div>
+            </div>
         </div>
+    </section>
 
-        <div class="expertise-grid">
-            <div class="expertise-card">
-                <div class="expertise-icon">🤝</div>
-                <h3>Développement Commercial & Partenariats</h3>
-                <ul>
-                    <li>Négociation de conventions stratégiques (juridique, technique, commercial)</li>
-                    <li>Animation de portefeuilles multi-partenaires (banques, courtiers, corporate)</li>
-                    <li>Pilotage de comités de pilotage et analyses de performance</li>
-                    <li>Réponses à appels d'offres avec taux de succès de 60%</li>
-                    <li>Développement de partenariats locaux et internationaux</li>
-                </ul>
+    <!-- Experience Timeline -->
+    <section id="experience">
+        <div class="container">
+            <h2 class="section-title">Mon Parcours Professionnel</h2>
+            <p class="section-subtitle">Une trajectoire marquée par l'excellence et l'innovation</p>
+            
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <span class="timeline-date">Mai 2023 - Août 2025</span>
+                        <h3 class="timeline-title">Spécialiste Partenariats & Distribution</h3>
+                        <p class="timeline-company">Gulf Insurance Group | Alger</p>
+                        <p><strong>🤝 Développement Commercial & Partenariats</strong></p>
+                        <ul class="timeline-achievements">
+                            <li>Gestion d'un portefeuille de 7+ partenaires stratégiques (banques, courtiers, clients corporate)</li>
+                            <li>Négociation de 6 conventions complexes avec coordination juridique, technique et commerciale</li>
+                            <li>Pilotage de comités trimestriels avec analyses de performance et recommandations stratégiques</li>
+                            <li>Coordination de 7 réponses à appels d'offres avec un taux de succès de 60%</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <p><strong>📊 Gestion Financière & Reporting</strong></p>
+                        <ul class="timeline-achievements">
+                            <li>Validation quotidienne de production pour 7+ partenaires avec contrôle de conformité</li>
+                            <li>Analyses semestrielles et situations financières mensuelles (encaissements, recouvrements)</li>
+                            <li>Maintien d'un taux de précision de 99.8% sur l'ensemble des opérations</li>
+                            <li>Calcul et contrôle des commissions mensuelles des partenaires</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <p><strong>⚡ Innovation & Digitalisation</strong></p>
+                        <ul class="timeline-achievements">
+                            <li>Création d'un formulaire Adobe Pro automatisé : -70% erreurs, -50% temps de traitement</li>
+                            <li>Digitalisation complète des avis d'aliment : 100% paperless, gain de temps considérable</li>
+                            <li>Automatisation des états de suivi via Power Automate : -60% temps reporting manuel</li>
+                            <li>Développement de dashboards temps réel avec notifications et rappels automatiques</li>
+                        </ul>
+                        <p style="margin-top: 1rem;"><strong>🎯 Leadership & Formation</strong></p>
+                        <ul class="timeline-achievements">
+                            <li>Formation de 250+ utilisateurs (réseaux bancaires, clients corporate) sur produits et procédures</li>
+                            <li>Pilotage du lancement d'une application mobile de déclaration sinistres</li>
+                            <li>Organisation du Brokers Annual Meeting : logistique, présentations, communication</li>
+                            <li>Création d'un challenge interne en collaboration avec la DRH</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <span class="timeline-date">Octobre 2022 - Mars 2023</span>
+                        <h3 class="timeline-title">Coordinatrice d'Admission</h3>
+                        <p class="timeline-company">SAG (Study Abroad Group) | Alger</p>
+                        <ul class="timeline-achievements">
+                            <li>Accompagnement de 200+ étudiants internationaux (Algérie, Maroc, Chili) dans leur processus d'admission</li>
+                            <li>Coordination avec 20+ universités partenaires pour résoudre problématiques d'admission et d'intégration</li>
+                            <li>Animation de réunions hebdomadaires (équipe commerciale) et mensuelles (Country Managers)</li>
+                            <li>Création d'un système de suivi des dossiers augmentant l'efficacité du traitement</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <span class="timeline-date">Janvier 2022 - Mai 2022</span>
+                        <h3 class="timeline-title">Conseillère en Export (Stage)</h3>
+                        <p class="timeline-company">ALGEX (Agence Nationale de Promotion du Commerce Extérieur)</p>
+                        <ul class="timeline-achievements">
+                            <li>Analyse des freins à l'exportation des produits algériens via études sectorielles</li>
+                            <li>Identification des obstacles opérationnels et réglementaires avec recommandations stratégiques</li>
+                            <li>Accompagnement des exposants au Salon international SIPSA</li>
+                            <li>Contribution à la promotion des produits algériens à l'export</li>
+                        </ul>
+                    </div>
+                </div>
             </div>
+        </div>
+    </section>
 
-            <div class="expertise-card">
-                <div class="expertise-icon">📊</div>
-                <h3>Gestion Opérationnelle & Financière</h3>
-                <ul>
-                    <li>Validation quotidienne de production multi-partenaires</li>
-                    <li>Reporting financier avec 99,8% de précision</li>
-                    <li>Calcul et contrôle des commissions partenaires</li>
-                    <li>Analyses de performance semestrielles</li>
-                    <li>Gestion des encaissements, créances et recouvrements</li>
-                </ul>
+    <!-- Projects Section -->
+    <section id="projects" style="background: var(--light);">
+        <div class="container">
+            <h2 class="section-title">Mes Projets Phares</h2>
+            <p class="section-subtitle">Des solutions concrètes qui génèrent des résultats mesurables</p>
+            
+            <div class="projects-grid">
+                <!-- Project 1 -->
+                <div class="project-card fade-in">
+                    <div class="project-header">
+                        <span class="project-icon">📋</span>
+                        <h3 class="project-title">Formulaire Intelligent de Souscription</h3>
+                    </div>
+                    <div class="project-body">
+                        <div class="project-section">
+                            <h4>Challenge</h4>
+                            <ul>
+                                <li>Erreurs fréquentes de saisie manuelle</li>
+                                <li>Temps de traitement trop long</li>
+                                <li>Réclamations clients élevées</li>
+                            </ul>
+                        </div>
+                        <div class="project-section">
+                            <h4>Solution</h4>
+                            <ul>
+                                <li>Formulaire Adobe Pro automatisé</li>
+                                <li>Calcul automatique des primes</li>
+                                <li>Validation intégrée des données</li>
+                            </ul>
+                        </div>
+                        <div class="project-section">
+                            <h4>Impact</h4>
+                            <ul>
+                                <li>70% de réduction d'erreurs</li>
+                                <li>50% de gain de temps</li>
+                                <li>Satisfaction client améliorée</li>
+                            </ul>
+                        </div>
+                        <div class="project-tags">
+                            <span class="tag">Adobe Pro</span>
+                            <span class="tag">Excel</span>
+                            <span class="tag">VBA</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 2 -->
+                <div class="project-card fade-in">
+                    <div class="project-header">
+                        <span class="project-icon">📄</span>
+                        <h3 class="project-title">Digitalisation 100% Paperless</h3>
+                    </div>
+                    <div class="project-body">
+                        <div class="project-section">
+                            <h4>Challenge</h4>
+                            <ul>
+                                <li>Processus entièrement papier</li>
+                                <li>Archivage physique coûteux</li>
+                                <li>Temps de recherche élevé</li>
+                            </ul>
+                        </div>
+                        <div class="project-section">
+                            <h4>Solution</h4>
+                            <ul>
+                                <li>Refonte complète du workflow</li>
+                                <li>Processus digital de bout en bout</li>
+                                <li>Formation des équipes</li>
+                            </ul>
+                        </div>
+                        <div class="project-section">
+                            <h4>Impact</h4>
+                            <ul>
+                                <li>100% élimination du papier</li>
+                                <li>Gain de temps considérable</li>
+                                <li>Réduction empreinte écologique</li>
+                            </ul>
+                        </div>
+                        <div class="project-tags">
+                            <span class="tag">Power Automate</span>
+                            <span class="tag">SharePoint</span>
+                            <span class="tag">Process Design</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 3 -->
+                <div class="project-card fade-in">
+                    <div class="project-header">
+                        <span class="project-icon">⚡</span>
+                        <h3 class="project-title">Hub d'Automatisation</h3>
+                    </div>
+                    <div class="project-body">
+                        <div class="project-section">
+                            <h4>Challenge</h4>
+                            <ul>
+                                <li>Reporting manuel chronophage</li>
+                                <li>Risques d'oublis et retards</li>
+                                <li>Manque de visibilité temps réel</li>
+                            </ul>
+                        </div>
+                        <div class="project-section">
+                            <h4>Solution</h4>
+                            <ul>
+                                <li>Workflows automatisés multi-processus</li>
+                                <li>Notifications & rappels intelligents</li>
+                                <li>Dashboards temps réel</li>
+                            </ul>
+                        </div>
+                        <div class="project-section">
+                            <h4>Impact</h4>
+                            <ul>
+                                <li>60% de réduction temps reporting</li>
+                                <li>Zéro oubli depuis déploiement</li>
+                                <li>Visibilité totale sur KPIs</li>
+                            </ul>
+                        </div>
+                        <div class="project-tags">
+                            <span class="tag">Power Automate</span>
+                            <span class="tag">Power BI</span>
+                            <span class="tag">Excel</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 4 -->
+                <div class="project-card fade-in">
+                    <div class="project-header">
+                        <span class="project-icon">🎓</span>
+                        <h3 class="project-title">Programme de Formation Grande Échelle</h3>
+                    </div>
+                    <div class="project-body">
+                        <div class="project-section">
+                            <h4>Challenge</h4>
+                            <ul>
+                                <li>250+ utilisateurs à former</li>
+                                <li>Niveaux de compétence variés</li>
+                                <li>Contraintes géographiques</li>
+                            </ul>
+                        </div>
+                        <div class="project-section">
+                            <h4>Solution</h4>
+                            <ul>
+                                <li>Programme structuré sur mesure</li>
+                                <li>Supports pédagogiques adaptés</li>
+                                <li>Sessions présentiel + distanciel</li>
+                            </ul>
+                        </div>
+                        <div class="project-section">
+                            <h4>Impact</h4>
+                            <ul>
+                                <li>250+ professionnels formés</li>
+                                <li>Taux de satisfaction élevé</li>
+                                <li>Adoption rapide des outils</li>
+                            </ul>
+                        </div>
+                        <div class="project-tags">
+                            <span class="tag">Formation</span>
+                            <span class="tag">Pédagogie</span>
+                            <span class="tag">Communication</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 5 -->
+                <div class="project-card fade-in">
+                    <div class="project-header">
+                        <span class="project-icon">🤝</span>
+                        <h3 class="project-title">Brokers Annual Meeting</h3>
+                    </div>
+                    <div class="project-body">
+                        <div class="project-section">
+                            <h4>Challenge</h4>
+                            <ul>
+                                <li>Événement stratégique majeur</li>
+                                <li>Coordination multi-départements</li>
+                                <li>Attentes élevées des courtiers</li>
+                            </ul>
+                        </div>
+                        <div class="project-section">
+                            <h4>Solution</h4>
+                            <ul>
+                                <li>Gestion complète de A à Z</li>
+                                <li>Logistique, contenu, communication</li>
+                                <li>Coordination de tous intervenants</li>
+                            </ul>
+                        </div>
+                        <div class="project-section">
+                            <h4>Impact</h4>
+                            <ul>
+                                <li>Événement réussi et apprécié</li>
+                                <li>Renforcement relations partenaires</li>
+                                <li>Alignement stratégique atteint</li>
+                            </ul>
+                        </div>
+                        <div class="project-tags">
+                            <span class="tag">Gestion Projet</span>
+                            <span class="tag">Leadership</span>
+                            <span class="tag">Événementiel</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 6 -->
+                <div class="project-card fade-in">
+                    <div class="project-header">
+                        <span class="project-icon">📱</span>
+                        <h3 class="project-title">Lancement Application Mobile</h3>
+                    </div>
+                    <div class="project-body">
+                        <div class="project-section">
+                            <h4>Challenge</h4>
+                            <ul>
+                                <li>Déclaration sinistres complexe</li>
+                                <li>Délais de traitement longs</li>
+                                <li>Expérience client à améliorer</li>
+                            </ul>
+                        </div>
+                        <div class="project-section">
+                            <h4>Solution</h4>
+                            <ul>
+                                <li>Tests utilisateurs approfondis</li>
+                                <li>Gestion des anomalies</li>
+                                <li>Formation utilisateurs finaux</li>
+                            </ul>
+                        </div>
+                        <div class="project-section">
+                            <h4>Impact</h4>
+                            <ul>
+                                <li>Simplification du processus</li>
+                                <li>Réduction des délais</li>
+                                <li>Satisfaction client accrue</li>
+                            </ul>
+                        </div>
+                        <div class="project-tags">
+                            <span class="tag">Project Management</span>
+                            <span class="tag">Testing</span>
+                            <span class="tag">Training</span>
+                        </div>
+                    </div>
+                </div>
             </div>
+        </div>
+    </section>
 
-            <div class="expertise-card">
-                <div class="expertise-icon">⚡</div>
-                <h3>Innovation & Transformation Digitale</h3>
-                <ul>
-                    <li>Automatisation de workflows avec Power Automate</li>
-                    <li>Digitalisation complète de processus (100% paperless)</li>
-                    <li>Création de formulaires intelligents avec calculs auto</li>
-                    <li>Développement de dashboards temps réel (Power BI)</li>
+    <!-- Skills Section -->
+    <section id="skills">
+        <div class="container">
+            <h2 class="section-title">Mes Compétences</h2>
+            <p class="section-subtitle">Une expertise diversifiée au service de la performance</p>
+            
+            <div class="skills-categories">
+                <!-- Business Development -->
+                <div class="skill-category fade-in">
+                    <h3><span class="skill-icon">🤝</span> Business Development</h3>
+                    <div class="skill-item">
+                        <div class="skill-name">
+                            <span>Gestion de Partenariats</span>
+                            <span>95%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" style="width: 95%"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-name">
+                            <span>Négociation Commerciale</span>
+                            <span>90%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" style="width: 90%"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-name">
+                            <span>Gestion Portefeuille Clients</span>
+                            <span>93%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" style="width: 93%"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Analyse & Data -->
+                <div class="skill-category fade-in">
+                    <h3><span class="skill-icon">📊</span> Analyse & Data</h3>
+                    <div class="skill-item">
+                        <div class="skill-name">
+                            <span>Excel Avancé (VBA, Macros)</span>
+                            <span>95%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" style="width: 95%"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-name">
+                            <span>Power BI (Dashboards, DAX)</span>
+                            <span>90%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" style="width: 90%"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-name">
+                            <span>Reporting Financier</span>
+                            <span>98%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" style="width: 98%"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Automatisation -->
+                <div class="skill-category fade-in">
+                    <h3><span class="skill-icon">⚡</span> Automatisation & Digital</h3>
+                    <div class="skill-item">
+                        <div class="skill-name">
+                            <span>Power Automate</span>
+                            <span>92%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" style="width: 92%"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-name">
+                            <span>Adobe Pro (Formulaires)</span>
+                            <span>88%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" style="width: 88%"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-name">
+                            <span>Process Digitalization</span>
+                            <span>90%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" style="width: 90%"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Management & Leadership -->
+                <div class="skill-category fade-in">
+                    <h3><span class="skill-icon">🎯</span> Management & Leadership</h3>
+                    <div class="skill-item">
+                        <div class="skill-name">
+                            <span>Gestion de Projets</span>
+                            <span>93%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" style="width: 93%"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-name">
+                            <span>Formation & Coaching</span>
+                            <span>95%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" style="width: 95%"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-name">
+                            <span>Coordination Multi-équipes</span>
+                            <span>90%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" style="width: 90%"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Marketing & Communication -->
+                <div class="skill-category fade-in">
+                    <h3><span class="skill-icon">📢</span> Marketing & Communication</h3>
+                    <div class="skill-item">
+                        <div class="skill-name">
+                            <span>Communication Corporate</span>
+                            <span>92%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" style="width: 92%"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-name">
+                            <span>Canva Avancé (Design)</span>
+                            <span>88%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" style="width: 88%"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-name">
+                            <span>Présentations Exécutives</span>
+                            <span>93%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" style="width: 93%"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Langues -->
+                <div class="skill-category fade-in">
+                    <h3><span class="skill-icon">🌍</span> Langues</h3>
+                    <div class="skill-item">
+                        <div class="skill-name">
+                            <span>Français (C1 - TCF)</span>
+                            <span>95%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" style="width: 95%"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-name">
+                            <span>Anglais (C1 - EF SET)</span>
+                            <span>95%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" style="width: 95%"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-name">
+                            <span>Arabe (Langue Maternelle)</span>
+                            <span>100%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" style="width: 100%"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact-section">
+        <div class="container">
+            <h2 class="section-title">Parlons de Votre Projet</h2>
+            <p class="section-subtitle">Prête à collaborer sur votre prochain défi</p>
+            
+            <div class="contact-grid">
+                <div class="contact-info">
+                    <div class="contact-item fade-in">
+                        <span class="contact-icon">📧</span>
+                        <div>
+                            <h4>Email</h4>
+                            <p>fayrouzmehalaine@gmail.com</p>
+                        </div>
+                    </div>
+                    <div class="contact-item fade-in">
+                        <span class="contact-icon">📱</span>
+                        <div>
+                            <h4>Téléphone</h4>
+                            <p>+213 773 665 871</p>
+                        </div>
+                    </div>
+                    <div class="contact-item fade-in">
+                        <span class="contact-icon">📍</span>
+                        <div>
+                            <h4>Localisation</h4>
+                            <p>Bab Ezzouar, Alger, Algérie</p>
+                        </div>
+                    </div>
+                    <div class="contact-item fade-in">
+                        <span class="contact-icon">💼</span>
+                        <div>
+                            <h4>Disponibilité</h4>
+                            <p>Ouverte aux opportunités</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="contact-form fade-in">
+                    <form>
+                        <div class="form-group">
+                            <label for="name">Nom Complet</label>
+                            <input type="text" id="name" name="name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <input type="email" id="email" name="email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="subject">Sujet</label>
+                            <input type="text" id="subject" name="subject" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="message">Message</label>
+                            <textarea id="message" name="message" required></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary" style="width: 100%;">Envoyer le Message</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Feyrouz Mehalaine. Tous droits réservés.</p>
+            <div class="social-links">
+                <a href="https://linkedin.com/in/feyrouz-mehalaine" target="_blank" title="LinkedIn">💼</a>
+                <a href="mailto:fayrouzmehalaine@gmail.com" title="Email">📧</a>
+                <a href="tel:+213773665871" title="Téléphone">📱</a>
+            </div>
+            <p style="margin-top: 1rem; font-size: 0.9rem; opacity: 0.8;">
+                Développé avec ❤️ et innovation
+            </p>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scroll for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Navbar scroll effect
+        const navbar = document.getElementById('navbar');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 100) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+
+        // Intersection Observer for fade-in animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -100px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.fade-in').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Animate timeline items on scroll
+        const timelineObserver = new IntersectionObserver((entries) => {
+            entries.forEach((entry, index) => {
+                if (entry.isIntersecting) {
+                    setTimeout(() => {
+                        entry.target.style.opacity = '1';
+                        entry.target.style.transform = 'translateY(0)';
+                    }, index * 200);
+                }
+            });
+        }, { threshold: 0.2 });
+
+        document.querySelectorAll('.timeline-item').forEach(item => {
+            timelineObserver.observe(item);
+        });
+
+        // Animate skill bars on scroll
+        const skillsObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const progressBars = entry.target.querySelectorAll('.skill-progress');
+                    progressBars.forEach(bar => {
+                        const width = bar.style.width;
+                        bar.style.width = '0';
+                        setTimeout(() => {
+                            bar.style.width = width;
+                        }, 100);
+                    });
+                }
+            });
+        }, { threshold: 0.5 });
+
+        document.querySelectorAll('.skill-category').forEach(category => {
+            skillsObserver.observe(category);
+        });
+
+        // Animate impact numbers
+        const animateNumber = (element, target) => {
+            const duration = 2000;
+            const start = 0;
+            const increment = target / (duration / 16);
+            let current = start;
+
+            const timer = setInterval(() => {
+                current += increment;
+                if (current >= target) {
+                    element.textContent = target + (element.textContent.includes('%') ? '%' : '+');
+                    clearInterval(timer);
+                } else {
+                    element.textContent = Math.floor(current) + (element.textContent.includes('%') ? '%' : '+');
+                }
+            }, 16);
+        };
+
+        const impactObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const number = entry.target.querySelector('.impact-number');
+                    const text = number.textContent;
+                    const value = parseInt(text);
+                    animateNumber(number, value);
+                    impactObserver.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.5 });
+
+        document.querySelectorAll('.impact-card').forEach(card => {
+            impactObserver.observe(card);
+        });
+
+        // Form submission (you can customize this)
+        document.querySelector('form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('Merci pour votre message ! Je vous répondrai dans les plus brefs délais.');
+            this.reset();
+        });
+    </script>
+</body>
+</html>

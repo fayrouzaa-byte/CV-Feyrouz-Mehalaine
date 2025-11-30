@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mes Projets | Feyrouz Mehalaine</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: { colors: { primary: '#2563eb', dark: '#0f172a' } }
+            }
+        }
+    </script>
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Mêmes styles que ta page d'accueil pour la cohérence -->
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&display=swap');
+        body { font-family: 'Outfit', sans-serif; }
+        
+        /* Style spécifique pour le bouton de demande */
+        .btn-request {
+            background: linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%);
+            color: white;
+            padding: 0.75rem 1.5rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 6px -1px rgba(37, 99, 235, 0.3);
+        }
+        .btn-request:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 15px -3px rgba(37, 99, 235, 0.4);
+        }
+    </style>
+</head>
+<body class="bg-gray-50 text-gray-800 dark:bg-slate-900 dark:text-gray-100 transition-colors duration-300 pt-24">
+
+    <!-- Navigation -->
+    <nav class="fixed w-full z-50 top-0 start-0 border-b border-gray-200 dark:border-slate-700 bg-white/90 dark:bg-slate-900/90 backdrop-blur-md">
+        <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
+            <a href="index.html" class="flex items-center space-x-3 rtl:space-x-reverse">
+                <span class="self-center text-xl font-semibold whitespace-nowrap dark:text-white">Feyrouz<span class="text-blue-600">.M</span></span>
+            </a>
+            
+            <!-- Mobile Menu Button -->
+            <button data-collapse-toggle="navbar-sticky" type="button" class="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600" aria-controls="navbar-sticky" aria-expanded="false">
+                <span class="sr-only">Open main menu</span>
+                <svg class="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 17 14">
+                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 1h15M1 7h15M1 13h15"/>
+                </svg>
+            </button>
+
+            <div class="items-center justify-between hidden w-full md:flex md:w-auto md:order-1" id="navbar-sticky">
+                <ul class="flex flex-col p-4 md:p-0 mt-4 font-medium border border-gray-100 rounded-lg md:space-x-8 rtl:space-x-reverse md:flex-row md:mt-0 md:border-0 dark:border-gray-700">
+                    <li><a href="index.html" class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500">Accueil</a></li>
+                    <li><a href="index.html#about" class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500">À Propos</a></li>
+                    <li><a href="projects.html" class="block py-2 px-3 text-white bg-blue-700 rounded md:bg-transparent md:text-blue-700 md:p-0 dark:text-white" aria-current="page">Projets</a></li>
+                    <li><a href="index.html#contact" class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500">Contact</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Header de la page -->
+    <header class="text-center py-12 px-4 bg-gradient-to-r from-blue-600 to-indigo-700 text-white mb-12">
+        <h1 class="text-4xl font-bold mb-4">Portfolio & Réalisations</h1>
+        <p class="text-lg opacity-90 max-w-2xl mx-auto">
+            Une sélection de mes travaux en analyse stratégique, automatisation des processus et gestion de projets.
+        </p>
+    </header>
+
+    <!-- Contenu Principal -->
+    <main class="container mx-auto px-6 max-w-6xl mb-20">
+        
+        <!-- SECTION MÉMOIRE (Mise en avant) -->
+        <div class="mb-16">
+            <h2 class="text-2xl font-bold mb-8 flex items-center gap-2 dark:text-white">
+                <i class="fas fa-graduation-cap text-blue-600"></i> Recherche Académique & Stratégique
+            </h2>
+            
+            <div class="bg-white dark:bg-slate-800 rounded-2xl overflow-hidden shadow-xl border border-gray-100 dark:border-slate-700 flex flex-col md:flex-row">
+                <!-- Partie Visuelle -->
+                <div class="md:w-1/3 bg-gray-100 dark:bg-slate-700 flex items-center justify-center p-8 relative overflow-hidden group">
+                    <div class="absolute inset-0 bg-blue-600/10 group-hover:bg-blue-600/20 transition duration-500"></div>
+                    <div class="text-center relative z-10">
+                        <i class="fas fa-book-reader text-6xl text-blue-600 mb-4 block"></i>
+                        <span class="inline-block bg-white dark:bg-slate-800 text-blue-600 px-4 py-1 rounded-full text-xs font-bold uppercase tracking-wider shadow-sm">Master 2</span>
+                    </div>
+                </div>
+                
+                <!-- Partie Contenu -->
+                <div class="md:w-2/3 p-8">
+                    <div class="flex flex-wrap items-start justify-between gap-4 mb-4">
+                        <div>
+                            <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-1">Analyse des Freins à l'Exportation</h3>
+                            <p class="text-blue-600 font-medium text-sm">École des Hautes Études Commerciales (EHEC) | Alger</p>
+                        </div>
+                        <span class="text-xs font-semibold bg-gray-100 dark:bg-slate-700 text-gray-600 dark:text-gray-300 px-3 py-1 rounded-lg">Mention Très Bien</span>
+                    </div>
+
+                    <p class="text-gray-600 dark:text-gray-300 mb-6 leading-relaxed">
+                        <strong>Thème :</strong> "Essai d'analyse des contraintes d'exportations des entreprises algériennes : Étude de cas ALGEX".
+                        <br><br>
+                        Ce mémoire de fin de cycle explore en profondeur les obstacles structurels et opérationnels (bureaucratie, logistique, financement) qui freinent l'essor des exportations hors hydrocarbures. Basé sur une enquête qualitative auprès d'opérateurs économiques et du personnel d'ALGEX.
+                    </p>
+
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-8">
+                        <div class="flex items-start gap-3">
+                            <i class="fas fa-check-circle text-green-500 mt-1"></i>
+                            <span class="text-sm text-gray-600 dark:text-gray-400">Analyse du monopole étatique vs ouverture marché</span>
+                        </div>
+                        <div class="flex items-start gap-3">
+                            <i class="fas fa-check-circle text-green-500 mt-1"></i>
+                            <span class="text-sm text-gray-600 dark:text-gray-400">Diagnostic des dispositifs d'aide (FSPE, CAGEX)</span>
+                        </div>
+                        <div class="flex items-start gap-3">
+                            <i class="fas fa-check-circle text-green-500 mt-1"></i>
+                            <span class="text-sm text-gray-600 dark:text-gray-400">Enquête terrain qualitative (Entretiens)</span>
+                        </div>
+                        <div class="flex items-start gap-3">
+                            <i class="fas fa-check-circle text-green-500 mt-1"></i>
+                            <span class="text-sm text-gray-600 dark:text-gray-400">Recommandations stratégiques pour ALGEX</span>
+                        </div>
+                    </div>
+
+                    <div class="flex flex-col sm:flex-row items-center justify-between gap-4 pt-6 border-t border-gray-100 dark:border-slate-700">
+                        <p class="text-xs text-gray-500 italic">
+                            <i class="fas fa-info-circle mr-1"></i> Document disponible sur demande pour les professionnels et chercheurs.
+                        </p>
+                        <!-- BOUTON INTELLIGENT MAILTO -->
+                        <a href="mailto:fayrouzmehalaine@gmail.com?subject=Demande%20de%20consultation%20:%20M%C3%A9moire%20Master%20EHEC&body=Bonjour%20Feyrouz,%0A%0AJe%20suis%20int%C3%A9ress%C3%A9(e)%20par%20votre%20m%C3%A9moire%20sur%20les%20exportations%20hors%20hydrocarbures.%20Pourriez-vous%20m'envoyer%20une%20copie%20PDF%20pour%20consultation%20?%0A%0ACordialement," class="btn-request w-full sm:w-auto justify-center">
+                            <i class="fas fa-envelope-open-text"></i> Demander le PDF
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- AUTRES PROJETS (Grille) -->
+        <h2 class="text-2xl font-bold mb-8 flex items-center gap-2 dark:text-white">
+            <i class="fas fa-briefcase text-blue-600"></i> Projets Professionnels
+        </h2>
+
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+            
+            <!-- Projet 1 -->
+            <div class="bg-white dark:bg-slate-800 rounded-xl overflow-hidden shadow-lg border border-gray-100 dark:border-slate-700 hover:-translate-y-2 transition duration-300">
+                <div class="h-48 bg-gray-100 dark:bg-slate-700 flex items-center justify-center relative group">
+                    <!-- Image placeholder ou icône -->
+                    <i class="fas fa-file-invoice-dollar text-5xl text-blue-500 group-hover:scale-110 transition duration-300"></i>
+                </div>
+                <div class="p-6">
+                    <div class="flex justify-between items-start mb-4">
+                        <h3 class="text-xl font-bold dark:text-white">Formulaire Intelligent</h3>
+                        <span class="bg-red-100 text-red-600 text-xs font-bold px-2 py-1 rounded">Adobe Pro</span>
+                    </div>
+                    <p class="text-gray-600 dark:text-gray-300 text-sm mb-4">
+                        Automatisation du processus de souscription via un formulaire PDF interactif avec calculs intégrés (JavaScript).
+                    </p>
+                    <ul class="text-sm text-gray-500 dark:text-gray-400 space-y-2">
+                        <li><i class="fas fa-check text-green-500 mr-2"></i> -70% d'erreurs de saisie</li>
+                        <li><i class="fas fa-check text-green-500 mr-2"></i> Calcul automatique des primes</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Projet 2 -->
+            <div class="bg-white dark:bg-slate-800 rounded-xl overflow-hidden shadow-lg border border-gray-100 dark:border-slate-700 hover:-translate-y-2 transition duration-300">
+                <div class="h-48 bg-gray-100 dark:bg-slate-700 flex items-center justify-center relative group">
+                    <i class="fas fa-mobile-alt text-5xl text-purple-500 group-hover:scale-110 transition duration-300"></i>
+                </div>
+                <div class="p-6">
+                    <div class="flex justify-between items-start mb-4">
+                        <h3 class="text-xl font-bold dark:text-white">App Mobile Sinistres</h3>
+                        <span class="bg-purple-100 text-purple-600 text-xs font-bold px-2 py-1 rounded">Gestion Projet</span>
+                    </div>
+                    <p class="text-gray-600 dark:text-gray-300 text-sm mb-4">
+                        Pilotage du lancement d'une application permettant la déclaration de sinistres à distance.
+                    </p>
+                    <ul class="text-sm text-gray-500 dark:text-gray-400 space-y-2">
+                        <li><i class="fas fa-check text-green-500 mr-2"></i> Formation de 250+ utilisateurs</li>
+                        <li><i class="fas fa-check text-green-500 mr-2"></i> Tests utilisateurs (UAT)</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Projet 3 -->
+            <div class="bg-white dark:bg-slate-800 rounded-xl overflow-hidden shadow-lg border border-gray-100 dark:border-slate-700 hover:-translate-y-2 transition duration-300">
+                <div class="h-48 bg-gray-100 dark:bg-slate-700 flex items-center justify-center relative group">
+                    <i class="fas fa-leaf text-5xl text-green-500 group-hover:scale-110 transition duration-300"></i>
+                </div>
+                <div class="p-6">
+                    <div class="flex justify-between items-start mb-4">
+                        <h3 class="text-xl font-bold dark:text-white">Workflow Zéro Papier</h3>
+                        <span class="bg-green-100 text-green-600 text-xs font-bold px-2 py-1 rounded">RSE</span>
+                    </div>
+                    <p class="text-gray-600 dark:text-gray-300 text-sm mb-4">
+                        Digitalisation complète du flux des avis d'aliments et archivage numérique sécurisé.
+                    </p>
+                    <ul class="text-sm text-gray-500 dark:text-gray-400 space-y-2">
+                        <li><i class="fas fa-check text-green-500 mr-2"></i> 100% Paperless atteint</li>
+                        <li><i class="fas fa-check text-green-500 mr-2"></i> Gain d'espace et de temps</li>
+                    </ul>
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-white dark:bg-slate-900 border-t border-gray-200 dark:border-slate-800 py-8 text-center text-sm text-gray-500">
+        <div class="container mx-auto px-6">
+            <p>&copy; 2025 Feyrouz Mehalaine. Tous droits réservés.</p>
+            <div class="flex justify-center gap-4 mt-4">
+                <a href="#" class="hover:text-blue-600 transition"><i class="fab fa-linkedin text-xl"></i></a>
+                <a href="mailto:fayrouzmehalaine@gmail.com" class="hover:text-blue-600 transition"><i class="fas fa-envelope text-xl"></i></a>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>

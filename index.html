@@ -222,6 +222,20 @@
             color: var(--primary);
         }
 
+        /* Style spécifique pour le bouton PDF */
+        .btn-pdf {
+            background: var(--gradient);
+            color: white;
+            width: 100%;
+            margin-top: 1rem;
+            text-align: center;
+        }
+        .btn-pdf:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            color: white;
+        }
+
         .btn-primary:hover {
             transform: translateY(-3px);
             box-shadow: 0 10px 30px rgba(0,0,0,0.2);
@@ -442,6 +456,12 @@
             box-shadow: 0 5px 20px rgba(0,0,0,0.1);
             transition: all 0.3s ease;
             border: 2px solid transparent;
+        }
+
+        /* Carte Mémoire Spéciale */
+        .project-card.featured {
+            border: 2px solid var(--primary);
+            background: linear-gradient(to bottom right, #ffffff, #f8fafc);
         }
 
         .project-card:hover {
@@ -799,14 +819,13 @@
         <div class="container">
             <div class="logo">FM</div>
             <ul>
-    <li><a href="index.html">Accueil</a></li>
-    <li><a href="#about">À Propos</a></li>
-    <li><a href="#experience">Expérience</a></li>
-    <!-- Le lien change ici : il pointe vers le fichier, pas la section -->
-    <li><a href="projects.html">Projets</a></li> 
-    <li><a href="#skills">Compétences</a></li>
-    <li><a href="#contact">Contact</a></li>
-</ul>
+                <li><a href="#home">Accueil</a></li>
+                <li><a href="#about">À Propos</a></li>
+                <li><a href="#experience">Expérience</a></li>
+                <li><a href="#projects">Projets</a></li>
+                <li><a href="#skills">Compétences</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
             <div class="mobile-menu-btn">
                 <span></span>
                 <span></span>
@@ -1018,6 +1037,40 @@
             <p class="section-subtitle">Des solutions concrètes qui génèrent des résultats mesurables</p>
             
             <div class="projects-grid">
+                <!-- NOUVELLE CARTE MÉMOIRE (AJOUTÉE ICI) -->
+                <div class="project-card featured fade-in">
+                    <div class="project-header">
+                        <span class="project-icon">🎓</span>
+                        <h3 class="project-title">Mémoire de Fin d'Études</h3>
+                        <span class="tag" style="background: white; margin-top: 0.5rem;">Master 2 - Mention Très Bien</span>
+                    </div>
+                    <div class="project-body">
+                        <div class="project-section">
+                            <h4>Thème</h4>
+                            <p style="font-style: italic;">"Essai d'analyse des contraintes d'exportations des entreprises algériennes : Cas ALGEX"</p>
+                        </div>
+                        <div class="project-section">
+                            <h4>Travaux Réalisés</h4>
+                            <ul>
+                                <li>Enquête terrain qualitative auprès des exportateurs</li>
+                                <li>Analyse des freins (bureaucratie, logistique, financement)</li>
+                                <li>Évaluation des dispositifs d'aide (FSPE, CAGEX)</li>
+                            </ul>
+                        </div>
+                        <div class="project-section">
+                            <!-- BOUTON INTELLIGENT MAILTO -->
+                            <a href="mailto:fayrouzmehalaine@gmail.com?subject=Demande%20de%20consultation%20:%20M%C3%A9moire%20Master%20EHEC&body=Bonjour%20Feyrouz,%0A%0AJe%20suis%20int%C3%A9ress%C3%A9(e)%20par%20votre%20m%C3%A9moire%20sur%20les%20exportations%20hors%20hydrocarbures.%20Pourriez-vous%20m'envoyer%20une%20copie%20PDF%20pour%20consultation%20?%0A%0ACordialement," class="btn btn-pdf">
+                                📥 Demander le PDF
+                            </a>
+                        </div>
+                        <div class="project-tags">
+                            <span class="tag">Recherche</span>
+                            <span class="tag">Stratégie</span>
+                            <span class="tag">EHEC Alger</span>
+                        </div>
+                    </div>
+                </div>
+
                 <!-- Project 1 -->
                 <div class="project-card fade-in">
                     <div class="project-header">

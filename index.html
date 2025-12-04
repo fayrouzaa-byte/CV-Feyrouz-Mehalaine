@@ -12,20 +12,45 @@
         }
 
         :root {
+            /* Couleurs principales */
             --primary: #2563eb;
             --secondary: #f59e0b;
             --accent: #10b981;
-            --dark: #1e293b;
-            --light: #f8fafc;
+            
+            /* Dégradés */
             --gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             --gradient2: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+
+            /* Variables de Thème (Mode Jour par défaut) */
+            --bg-body: #ffffff;
+            --bg-section: #f8fafc; /* Le gris très clair */
+            --bg-card: #ffffff;
+            --text-main: #1e293b;
+            --text-muted: #64748b;
+            --nav-bg: rgba(255, 255, 255, 0.95);
+            --shadow: 0 5px 20px rgba(0,0,0,0.1);
+            --border-color: transparent;
+        }
+
+        /* CONFIGURATION MODE NUIT */
+        body.dark-mode {
+            --bg-body: #0f172a; /* Bleu nuit très foncé */
+            --bg-section: #1e293b; /* Bleu nuit un peu plus clair */
+            --bg-card: #1e293b;
+            --text-main: #f1f5f9; /* Blanc cassé */
+            --text-muted: #94a3b8; /* Gris clair */
+            --nav-bg: rgba(15, 23, 42, 0.95);
+            --shadow: 0 5px 20px rgba(0,0,0,0.4);
+            --border-color: #334155;
         }
 
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             line-height: 1.6;
-            color: var(--dark);
+            color: var(--text-main);
+            background-color: var(--bg-body);
             overflow-x: hidden;
+            transition: background-color 0.3s ease, color 0.3s ease;
         }
 
         /* Smooth Scroll */
@@ -38,9 +63,9 @@
             position: fixed;
             top: 0;
             width: 100%;
-            background: rgba(255, 255, 255, 0.95);
+            background: var(--nav-bg);
             backdrop-filter: blur(10px);
-            box-shadow: 0 2px 20px rgba(0,0,0,0.1);
+            box-shadow: var(--shadow);
             z-index: 1000;
             transition: all 0.3s ease;
         }
@@ -72,11 +97,12 @@
             display: flex;
             list-style: none;
             gap: 2rem;
+            align-items: center; /* Centrer verticalement avec le bouton nuit */
         }
 
         nav a {
             text-decoration: none;
-            color: var(--dark);
+            color: var(--text-main);
             font-weight: 500;
             transition: color 0.3s;
             position: relative;
@@ -101,6 +127,26 @@
             width: 100%;
         }
 
+        /* BOUTON MODE NUIT */
+        .theme-toggle {
+            cursor: pointer;
+            padding: 8px 12px;
+            border-radius: 20px;
+            border: 2px solid var(--primary);
+            background: transparent;
+            color: var(--text-main);
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .theme-toggle:hover {
+            background: var(--primary);
+            color: white;
+        }
+
         /* Hero Section */
         .hero {
             min-height: 100vh;
@@ -109,7 +155,7 @@
             align-items: center;
             justify-content: center;
             text-align: center;
-            color: white;
+            color: white; /* Reste blanc même en mode nuit car le fond est coloré */
             position: relative;
             overflow: hidden;
             padding-top: 80px;
@@ -265,6 +311,12 @@
             padding: 5rem 0;
         }
 
+        /* Classes pour les fonds alternés */
+        .bg-section {
+            background-color: var(--bg-section);
+            transition: background-color 0.3s ease;
+        }
+
         .section-title {
             font-size: 2.5rem;
             text-align: center;
@@ -277,7 +329,7 @@
 
         .section-subtitle {
             text-align: center;
-            color: #64748b;
+            color: var(--text-muted);
             margin-bottom: 4rem;
             font-size: 1.1rem;
         }
@@ -293,6 +345,7 @@
         .about-text {
             font-size: 1.1rem;
             line-height: 1.8;
+            color: var(--text-main);
         }
 
         .about-text p {
@@ -311,11 +364,12 @@
         }
 
         .skill-card {
-            background: var(--light);
+            background: var(--bg-card);
             padding: 1.5rem;
             border-radius: 15px;
             transition: all 0.3s ease;
-            border: 2px solid transparent;
+            border: 1px solid var(--border-color);
+            box-shadow: var(--shadow);
         }
 
         .skill-card:hover {
@@ -330,6 +384,10 @@
             display: flex;
             align-items: center;
             gap: 0.5rem;
+        }
+        
+        .skill-card p {
+            color: var(--text-muted);
         }
 
         .skill-icon {
@@ -374,12 +432,13 @@
         }
 
         .timeline-content {
-            background: white;
+            background: var(--bg-card);
             padding: 2rem;
             border-radius: 15px;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            box-shadow: var(--shadow);
             transition: all 0.3s ease;
             margin: 0 2rem;
+            border: 1px solid var(--border-color);
         }
 
         .timeline-content:hover {
@@ -396,7 +455,7 @@
             background: var(--primary);
             border-radius: 50%;
             transform: translateX(-50%);
-            border: 4px solid white;
+            border: 4px solid var(--bg-body); /* Le bord du point s'adapte au fond */
             box-shadow: 0 0 0 4px var(--primary);
             z-index: 1;
         }
@@ -414,7 +473,7 @@
         .timeline-title {
             font-size: 1.5rem;
             margin-bottom: 0.5rem;
-            color: var(--dark);
+            color: var(--text-main);
         }
 
         .timeline-company {
@@ -426,6 +485,7 @@
         .timeline-achievements {
             list-style: none;
             margin-top: 1rem;
+            color: var(--text-muted);
         }
 
         .timeline-achievements li {
@@ -450,18 +510,20 @@
         }
 
         .project-card {
-            background: white;
+            background: var(--bg-card);
             border-radius: 20px;
             overflow: hidden;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            box-shadow: var(--shadow);
             transition: all 0.3s ease;
             border: 2px solid transparent;
+            border-color: var(--border-color);
         }
 
         /* Carte Mémoire Spéciale */
         .project-card.featured {
             border: 2px solid var(--primary);
-            background: linear-gradient(to bottom right, #ffffff, #f8fafc);
+            /* Petit ajustement pour le dark mode sur le gradient featured */
+            background: var(--bg-card); 
         }
 
         .project-card:hover {
@@ -490,6 +552,7 @@
 
         .project-body {
             padding: 2rem;
+            color: var(--text-main);
         }
 
         .project-section {
@@ -507,6 +570,7 @@
         .project-section ul {
             list-style: none;
             padding-left: 0;
+            color: var(--text-muted);
         }
 
         .project-section li {
@@ -531,12 +595,13 @@
         }
 
         .tag {
-            background: var(--light);
+            background: var(--bg-section);
             padding: 0.3rem 0.8rem;
             border-radius: 20px;
             font-size: 0.85rem;
             color: var(--primary);
             font-weight: 500;
+            border: 1px solid var(--border-color);
         }
 
         /* Impact Numbers */
@@ -550,10 +615,11 @@
         .impact-card {
             text-align: center;
             padding: 2rem;
-            background: white;
+            background: var(--bg-card);
             border-radius: 15px;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            box-shadow: var(--shadow);
             transition: all 0.3s ease;
+            border: 1px solid var(--border-color);
         }
 
         .impact-card:hover {
@@ -573,7 +639,7 @@
         }
 
         .impact-label {
-            color: var(--dark);
+            color: var(--text-main);
             font-weight: 500;
         }
 
@@ -585,10 +651,11 @@
         }
 
         .skill-category {
-            background: white;
+            background: var(--bg-card);
             padding: 2rem;
             border-radius: 15px;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            box-shadow: var(--shadow);
+            border: 1px solid var(--border-color);
         }
 
         .skill-category h3 {
@@ -608,11 +675,12 @@
             justify-content: space-between;
             margin-bottom: 0.5rem;
             font-weight: 500;
+            color: var(--text-main);
         }
 
         .skill-bar {
             height: 8px;
-            background: var(--light);
+            background: var(--bg-section);
             border-radius: 10px;
             overflow: hidden;
         }
@@ -626,7 +694,8 @@
 
         /* Contact Section */
         .contact-section {
-            background: var(--light);
+            background-color: var(--bg-section);
+            transition: background-color 0.3s ease;
         }
 
         .contact-grid {
@@ -646,9 +715,19 @@
             align-items: center;
             gap: 1rem;
             padding: 1.5rem;
-            background: white;
+            background: var(--bg-card);
             border-radius: 15px;
             transition: all 0.3s ease;
+            box-shadow: var(--shadow);
+            border: 1px solid var(--border-color);
+        }
+
+        .contact-item h4 {
+            color: var(--text-main);
+        }
+        
+        .contact-item p {
+            color: var(--text-muted);
         }
 
         .contact-item:hover {
@@ -662,10 +741,11 @@
         }
 
         .contact-form {
-            background: white;
+            background: var(--bg-card);
             padding: 2rem;
             border-radius: 15px;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            box-shadow: var(--shadow);
+            border: 1px solid var(--border-color);
         }
 
         .form-group {
@@ -676,14 +756,16 @@
             display: block;
             margin-bottom: 0.5rem;
             font-weight: 500;
-            color: var(--dark);
+            color: var(--text-main);
         }
 
         .form-group input,
         .form-group textarea {
             width: 100%;
             padding: 0.8rem;
-            border: 2px solid var(--light);
+            border: 2px solid var(--bg-section);
+            background: var(--bg-body);
+            color: var(--text-main);
             border-radius: 10px;
             font-size: 1rem;
             transition: border-color 0.3s;
@@ -702,7 +784,7 @@
 
         /* Footer */
         footer {
-            background: var(--dark);
+            background: #0f172a; /* Toujours foncé pour le footer */
             color: white;
             text-align: center;
             padding: 2rem;
@@ -737,7 +819,7 @@
         .mobile-menu-btn span {
             width: 25px;
             height: 3px;
-            background: var(--dark);
+            background: var(--text-main);
             transition: all 0.3s;
         }
 
@@ -814,7 +896,6 @@
     </style>
 </head>
 <body>
-    <!-- Navigation -->
     <nav id="navbar">
         <div class="container">
             <div class="logo">FM</div>
@@ -825,6 +906,7 @@
                 <li><a href="#projects">Projets</a></li>
                 <li><a href="#skills">Compétences</a></li>
                 <li><a href="#contact">Contact</a></li>
+                <li><button id="theme-toggle" class="theme-toggle" title="Basculer Mode Nuit">🌙</button></li>
             </ul>
             <div class="mobile-menu-btn">
                 <span></span>
@@ -834,7 +916,6 @@
         </div>
     </nav>
 
-    <!-- Hero Section -->
     <section class="hero" id="home">
         <div class="hero-content">
             <h1>FEYROUZ MEHALAINE</h1>
@@ -867,7 +948,6 @@
         </div>
     </section>
 
-    <!-- About Section -->
     <section id="about">
         <div class="container">
             <h2 class="section-title">Qui suis-je ?</h2>
@@ -908,8 +988,7 @@
         </div>
     </section>
 
-    <!-- Impact Numbers -->
-    <section style="background: var(--light);">
+    <section class="bg-section">
         <div class="container">
             <h2 class="section-title">Mon Impact en Chiffres</h2>
             <div class="impact-grid">
@@ -941,7 +1020,6 @@
         </div>
     </section>
 
-    <!-- Experience Timeline -->
     <section id="experience">
         <div class="container">
             <h2 class="section-title">Mon Parcours Professionnel</h2>
@@ -1030,14 +1108,12 @@
         </div>
     </section>
 
-    <!-- Projects Section -->
-    <section id="projects" style="background: var(--light);">
+    <section id="projects" class="bg-section">
         <div class="container">
             <h2 class="section-title">Mes Projets Phares</h2>
             <p class="section-subtitle">Des solutions concrètes qui génèrent des résultats mesurables</p>
             
             <div class="projects-grid">
-                <!-- NOUVELLE CARTE MÉMOIRE (AJOUTÉE ICI) -->
                 <div class="project-card featured fade-in">
                     <div class="project-header">
                         <span class="project-icon">🎓</span>
@@ -1058,7 +1134,6 @@
                             </ul>
                         </div>
                         <div class="project-section">
-                            <!-- BOUTON INTELLIGENT MAILTO -->
                             <a href="mailto:fayrouzmehalaine@gmail.com?subject=Demande%20de%20consultation%20:%20M%C3%A9moire%20Master%20EHEC&body=Bonjour%20Feyrouz,%0A%0AJe%20suis%20int%C3%A9ress%C3%A9(e)%20par%20votre%20m%C3%A9moire%20sur%20les%20exportations%20hors%20hydrocarbures.%20Pourriez-vous%20m'envoyer%20une%20copie%20PDF%20pour%20consultation%20?%0A%0ACordialement," class="btn btn-pdf">
                                 📥 Demander le PDF
                             </a>
@@ -1071,7 +1146,6 @@
                     </div>
                 </div>
 
-                <!-- Project 1 -->
                 <div class="project-card fade-in">
                     <div class="project-header">
                         <span class="project-icon">📋</span>
@@ -1110,7 +1184,6 @@
                     </div>
                 </div>
 
-                <!-- Project 2 -->
                 <div class="project-card fade-in">
                     <div class="project-header">
                         <span class="project-icon">📄</span>
@@ -1149,7 +1222,6 @@
                     </div>
                 </div>
 
-                <!-- Project 3 -->
                 <div class="project-card fade-in">
                     <div class="project-header">
                         <span class="project-icon">⚡</span>
@@ -1188,7 +1260,6 @@
                     </div>
                 </div>
 
-                <!-- Project 4 -->
                 <div class="project-card fade-in">
                     <div class="project-header">
                         <span class="project-icon">🎓</span>
@@ -1227,7 +1298,6 @@
                     </div>
                 </div>
 
-                <!-- Project 5 -->
                 <div class="project-card fade-in">
                     <div class="project-header">
                         <span class="project-icon">🤝</span>
@@ -1266,7 +1336,6 @@
                     </div>
                 </div>
 
-                <!-- Project 6 -->
                 <div class="project-card fade-in">
                     <div class="project-header">
                         <span class="project-icon">📱</span>
@@ -1308,14 +1377,12 @@
         </div>
     </section>
 
-    <!-- Skills Section -->
     <section id="skills">
         <div class="container">
             <h2 class="section-title">Mes Compétences</h2>
             <p class="section-subtitle">Une expertise diversifiée au service de la performance</p>
             
             <div class="skills-categories">
-                <!-- Business Development -->
                 <div class="skill-category fade-in">
                     <h3><span class="skill-icon">🤝</span> Business Development</h3>
                     <div class="skill-item">
@@ -1347,7 +1414,6 @@
                     </div>
                 </div>
 
-                <!-- Analyse & Data -->
                 <div class="skill-category fade-in">
                     <h3><span class="skill-icon">📊</span> Analyse & Data</h3>
                     <div class="skill-item">
@@ -1379,7 +1445,6 @@
                     </div>
                 </div>
 
-                <!-- Automatisation -->
                 <div class="skill-category fade-in">
                     <h3><span class="skill-icon">⚡</span> Automatisation & Digital</h3>
                     <div class="skill-item">
@@ -1411,7 +1476,6 @@
                     </div>
                 </div>
 
-                <!-- Management & Leadership -->
                 <div class="skill-category fade-in">
                     <h3><span class="skill-icon">🎯</span> Management & Leadership</h3>
                     <div class="skill-item">
@@ -1443,7 +1507,6 @@
                     </div>
                 </div>
 
-                <!-- Marketing & Communication -->
                 <div class="skill-category fade-in">
                     <h3><span class="skill-icon">📢</span> Marketing & Communication</h3>
                     <div class="skill-item">
@@ -1475,7 +1538,6 @@
                     </div>
                 </div>
 
-                <!-- Langues -->
                 <div class="skill-category fade-in">
                     <h3><span class="skill-icon">🌍</span> Langues</h3>
                     <div class="skill-item">
@@ -1510,7 +1572,6 @@
         </div>
     </section>
 
-    <!-- Contact Section -->
     <section id="contact" class="contact-section">
         <div class="container">
             <h2 class="section-title">Parlons de Votre Projet</h2>
@@ -1573,7 +1634,6 @@
         </div>
     </section>
 
-    <!-- Footer -->
     <footer>
         <div class="container">
             <p>&copy; 2025 Feyrouz Mehalaine. Tous droits réservés.</p>
@@ -1589,6 +1649,33 @@
     </footer>
 
     <script>
+        // --- LOGIQUE MODE NUIT ---
+        const themeBtn = document.getElementById('theme-toggle');
+        const body = document.body;
+
+        // 1. Vérifier si l'utilisateur a déjà choisi un thème auparavant
+        if(localStorage.getItem('theme') === 'dark') {
+            body.classList.add('dark-mode');
+            themeBtn.innerHTML = '☀️'; // Icône soleil pour le mode sombre
+        }
+
+        // 2. Écouter le clic sur le bouton
+        themeBtn.addEventListener('click', () => {
+            body.classList.toggle('dark-mode');
+            
+            // Changer l'icône et sauvegarder la préférence
+            if(body.classList.contains('dark-mode')){
+                localStorage.setItem('theme', 'dark');
+                themeBtn.innerHTML = '☀️';
+            } else {
+                localStorage.setItem('theme', 'light');
+                themeBtn.innerHTML = '🌙';
+            }
+        });
+
+
+        // --- RESTE DU SCRIPT ORIGINAL ---
+        
         // Smooth scroll for navigation links
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
